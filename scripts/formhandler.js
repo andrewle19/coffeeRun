@@ -15,6 +15,8 @@
 
     FormHandler.prototype.addSubmitHandler = function (fn) {
         console.log('Setting submit handler for form');
+
+
         this.$formElement.on('submit',function(event) {
 
             event.preventDefault();
@@ -27,10 +29,12 @@
             fn(data);
             this.reset();
             this.elements[0].focus();
+
         });
     };
 
     $('#payment-form').on('submit', function (event) {
+        console.log('called');
         event.preventDefault();
 
         // Store values of each element of form
@@ -47,7 +51,13 @@
         // Clear form
         this.reset();
         this.elements[0].focus();
+
     });
+    
+
+
+
+
 
 
 
