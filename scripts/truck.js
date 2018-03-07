@@ -14,7 +14,7 @@
 
     Truck.prototype.deliverOrder = function (customerId) {
         console.log('Delivering order for ' + customerId);
-        this.db.remove(customerId)
+        this.db.remove(customerId);
     };
 
     Truck.prototype.printOrders = function () {

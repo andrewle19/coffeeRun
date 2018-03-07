@@ -16,6 +16,6 @@
         myTruck.createOrder.call(myTruck, data);
         checkList.addRow.call(checkList, data);
     });
-    //console.log(formHandler);
+    console.log(formHandler);
     window.myTruck = myTruck;
 })(window);
