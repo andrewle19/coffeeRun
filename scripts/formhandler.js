@@ -14,19 +14,42 @@
     }
 
     FormHandler.prototype.addSubmitHandler = function (fn) {
-        console.log('Setting submit handler for form');
+        //console.log('Setting submit handler for form');
         this.$formElement.on('submit',function(event) {
+
             event.preventDefault();
             var data = {};
             $(this).serializeArray().forEach(function (item){
                 data[item.name] = item.value;
-                console.log(item.name + ' is ' + item.value);
+                //console.log(item.name + ' is ' + item.value);
             });
-            console.log(data);
+            //console.log(data);
             fn(data);
             this.reset();
+            this.elements[0].focus();
         });
     };
+
+    $('#payment-form').on('submit', function (event) {
+        event.preventDefault();
+
+        // Store values of each element of form
+        var data = {};
+        $(this).serializeArray().forEach(function (item) {
+            data[item.name] = item.value;
+            //console.log(item.name + ' is ' + item.value);
+        });
+
+        $('#payMsg').text('Thank you for your payment ' + data.title + ' ' + data.username);
+        // Close the modal
+        $('#popup').modal({});
+
+        // Clear form
+        this.reset();
+        this.elements[0].focus();
+    });
+
+
 
 
     App.FormHandler = FormHandler;

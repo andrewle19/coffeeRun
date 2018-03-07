@@ -49,20 +49,30 @@
 
           <div class="form-group">
             <label for="strengthLevel">Caffeine Rating</label>
-            <input type="range" name="stregnth" value="30" id="strengthLevel">
+            <input type="range" name="strength" value="30" id="strengthLevel">
           </div>
           <button type="submit" name="btn btn-default">Submit</button>.
           <button type="reset" name="btn btn-default">Reset</button>
           </form>
         </div>
+      </div>
 
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>Pending Orders:</h4>
+          <div data-coffee-order="checklist">
+          <a href="paymentForm.html" rel="modal:open">example</a>
+
+          </div>
+        </div>
       </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
     <script src="scripts/formhandler.js" charset="utf-8"></script>
     <script src="scripts/datastore.js" charset="utf-8"></script>
+    <script src="scripts/checklist.js" charset="utf-8"></script>
+
     <script src="scripts/truck.js" charset="utf-8"></script>
     <script src="scripts/main.js" charset="utf-8"></script>
-
   </body>
 </html>
