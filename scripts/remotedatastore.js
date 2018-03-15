@@ -24,17 +24,27 @@
         });
     };
 
-    RemoteDataStore.prototype.get = function (key, cb) {
-        $.get(this.serverUrl + '/' + key, function(serverResponse){
+    RemoteDataStore.prototype.get = function (key) {
+        $.get(this.serverUrl,{ emailAddress: key }, function(serverResponse){
             console.log(serverResponse);
-            cb(serverResponse);
+            // cb(serverResponse);
         });
+
+
+
+
     };
 
     RemoteDataStore.prototype.remove = function (key) {
-        $.ajax(this.serverUrl + '/' + key, {
-            type: 'DELETE'
+        var serverUrl = this.serverUrl;
+        $.get(serverUrl, {emailAddress: key},function(serverResponse){
+            console.log(serverUrl + '/' + serverResponse[0]['id']);
+            $.ajax({
+                url: serverUrl + '/' + serverResponse[0]['id'],
+                type: 'DELETE'
+            });
         });
+
     };
 
     App.RemoteDataStore = RemoteDataStore;
