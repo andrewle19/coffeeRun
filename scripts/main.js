@@ -14,17 +14,24 @@
     var myTruck = new Truck('Falcon',remoteDS);
     var checkList = new CheckList(CHECKLIST_SELECTOR);
     checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
-    
+
     var formHandler = new FormHandler(FORM_SELECTOR);
 
     $('#payment').on('click',function(){
         window.location.replace('paymentForm.html');
     });
 
+    remoteDS.getAll(function (data){
+        myTruck.createOrder.call(myTruck,data);
+        checkList.addRow.call(checkList,data);
+    });
+
     formHandler.addSubmitHandler(function(data) {
+        console.log(data);
         myTruck.createOrder.call(myTruck, data);
         checkList.addRow.call(checkList, data);
     });
+
 
     console.log(formHandler);
     window.myTruck = myTruck;

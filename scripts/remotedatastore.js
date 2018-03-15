@@ -20,7 +20,10 @@
     RemoteDataStore.prototype.getAll = function (cb) {
         $.get(this.serverUrl, function(serverResponse){
             console.log(serverResponse);
-            cb(serverResponse);
+            // send objects to the cb one at a time(serverResponse is an array of objects)
+            for(var i = 0; i < serverResponse.length; i++){
+                cb(serverResponse[i]);
+            }
         });
     };
 
@@ -29,10 +32,6 @@
             console.log(serverResponse);
             // cb(serverResponse);
         });
-
-
-
-
     };
 
     RemoteDataStore.prototype.remove = function (key) {
